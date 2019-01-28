@@ -18,7 +18,7 @@ module.exports.fixedName = function(test, tableName, tableDef) {
   return dynamo;
 };
 
-function ddbtest(test, projectName, tableDef, region) {
+function ddbtest(test, projectName, tableDef, region, port) {
   var live = !!region;
   tableDef = _(tableDef).clone();
 
@@ -34,6 +34,7 @@ function ddbtest(test, projectName, tableDef, region) {
   }
 
   var dynamodb = {};
+  port = port || '4567';
 
   dynamodb.tableName = tableDef.TableName = [
     'test',
@@ -47,7 +48,7 @@ function ddbtest(test, projectName, tableDef, region) {
     region: 'fake',
     accessKeyId: 'fake',
     secretAccessKey: 'fake',
-    endpoint: 'http://localhost:4567'
+    endpoint: 'http://localhost:' + port
   };
 
   dynamodb.dynamo = new AWS.DynamoDB(options);

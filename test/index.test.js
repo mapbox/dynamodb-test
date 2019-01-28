@@ -34,6 +34,13 @@ test('provides sdks', function(assert) {
   assert.end();
 });
 
+test('respects port option', function(assert) {
+  assert.equal(mocked.config.endpoint, 'http://localhost:4567', 'uses default port');
+  var dbWithCustomPort = require('..')(test, project, tableDef, null, 1122);
+  assert.equal(dbWithCustomPort.config.endpoint, 'http://localhost:1122', 'uses specified port');
+  assert.end();
+});
+
 mocked.start();
 
 test('mocked start', function(assert) {
