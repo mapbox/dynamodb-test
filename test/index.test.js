@@ -41,6 +41,13 @@ test('respects port option', function(assert) {
   assert.end();
 });
 
+test('removes TimeToLiveSpecification', function(assert) {
+  var tableDefWithTTL = _({ TimeToLiveSpecification: { Enabled: true }}).defaults(mocked.tableDef);
+  var db = require('..')(test, project, tableDefWithTTL);
+  assert.notOk(db.tableDef.TimeToLiveSpecification, 'TimeToLiveSpecification is removed');
+  assert.end();
+});
+
 mocked.start();
 
 test('mocked start', function(assert) {
@@ -85,6 +92,22 @@ test('mock two tables', function(assert) {
 });
 
 secondMock.delete();
+
+var tableDefWithTTL = _({ TimeToLiveSpecification: { Enabled: true }}).defaults(mocked.tableDef);
+var mockWithTTL = require('..')(test, project, tableDefWithTTL);
+mockWithTTL.start();
+
+test('mock with TTL', function(assert) {
+  mockWithTTL.dynamo.listTables({}, function(err, data) {
+    if (err) throw err;
+    assert.notOk(mockWithTTL.tableDef.TimeToLiveSpecification, 'should not have TimeToLiveSpecification');
+    assert.ok(data.TableNames.indexOf(mockWithTTL.tableName) > -1, 'created table');
+    assert.end();
+  });
+});
+
+mockWithTTL.delete();
+
 mocked.delete();
 
 test('mocked delete', function(assert) {
