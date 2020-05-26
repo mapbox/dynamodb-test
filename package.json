@@ -1,6 +1,6 @@
 {
   "name": "@mapbox/dynamodb-test",
-  "version": "0.5.0-dev.1",
+  "version": "0.4.0",
   "description": "Create and destroy DynamoDB and Dynalite tables for use in tape tests",
   "main": "index.js",
   "scripts": {
