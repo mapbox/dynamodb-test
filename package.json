@@ -1,6 +1,6 @@
 {
   "name": "@mapbox/dynamodb-test",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Create and destroy DynamoDB and Dynalite tables for use in tape tests",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rclark/dynamodb-test.git"
+    "url": "https://github.com/mapbox/dynamodb-test.git"
   },
   "keywords": [
     "AWS",
@@ -21,9 +21,9 @@
   "author": "Ryan Clark",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rclark/dynamodb-test/issues"
+    "url": "https://github.com/mapbox/dynamodb-test/issues"
   },
-  "homepage": "https://github.com/rclark/dynamodb-test",
+  "homepage": "https://github.com/mapbox/dynamodb-test",
   "dependencies": {
     "@mapbox/dyno": "^1.4.1",
     "aws-sdk": "^2.3.14",
