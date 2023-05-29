@@ -22,9 +22,11 @@ function ddbtest(test, projectName, tableDef, region, port) {
   var live = !!region;
   tableDef = _(tableDef).clone();
 
-  // DynamoDB's TimeToLiveSpecification is not valid for aws-sdk's createTable
-  // and is not supported in dynalite, so remove it.
+  // The following fields are not valid for aws-sdk's createTable and not
+  // supported in dynalite, so they are removed. They are commonly supplied
+  // from CFN templates.
   delete tableDef.TimeToLiveSpecification;
+  delete tableDef.PointInTimeRecoverySpecification;
 
   function getKeys(item) {
     var keyNames = tableDef.KeySchema.map(function(key) {
