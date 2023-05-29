@@ -160,7 +160,7 @@ mocked.close();
 
 test('mocked close dynalite', function(assert) {
   mocked.dyno.scan(function(err) {
-    assert.equal(err.errno, 'ECONNREFUSED', 'dynalite is closed');
+    assert.equal(err.code, 'UnknownEndpoint', 'dynalite is closed');
     assert.end();
   });
 });
