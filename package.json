@@ -25,13 +25,13 @@
   },
   "homepage": "https://github.com/mapbox/dynamodb-test",
   "dependencies": {
-    "@mapbox/dyno": "^1.4.1",
-    "aws-sdk": "^2.3.14",
-    "dynalite": "^3.2.1",
-    "underscore": "^1.8.3"
+    "@mapbox/dyno": "^1.6.1",
+    "aws-sdk": "^2.1386.0",
+    "dynalite": "^3.2.2",
+    "underscore": "^1.13.6"
   },
   "devDependencies": {
-    "eslint": "^6.2.2",
-    "tape": "^4.5.1"
+    "eslint": "^6.8.0",
+    "tape": "^4.16.2"
   }
 }
