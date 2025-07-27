@@ -31,7 +31,7 @@ To configure a dynalite test runner with a fixed table name.
 
 **dynamodb.dynamo**
 
-An instance of [AWS.DynamoDB](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html) configured to query your test endpoint (live or dynalite).
+An instance of [DynamoDB](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/client/dynamodb/) from AWS SDK v3 configured to query your test endpoint (live or dynalite).
 
 **dynamodb.dyno**
 

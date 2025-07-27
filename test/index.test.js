@@ -160,7 +160,8 @@ mocked.close();
 
 test('mocked close dynalite', function(assert) {
   mocked.dyno.scan(function(err) {
-    assert.equal(err.code, 'UnknownEndpoint', 'dynalite is closed');
+    // AWS SDK v3 returns 'NetworkingError' instead of 'UnknownEndpoint'
+    assert.ok(err.code === 'UnknownEndpoint' || err.code === 'NetworkingError', 'dynalite is closed');
     assert.end();
   });
 });
