@@ -1,5 +1,5 @@
 var crypto = require('crypto');
-var AWS = require('aws-sdk');
+var DynamoDB = require('@aws-sdk/client-dynamodb').DynamoDB;
 var _ = require('underscore');
 var stream = require('stream');
 var Dyno = require('@mapbox/dyno');
@@ -50,15 +50,26 @@ function ddbtest(test, projectName, tableDef, region, port) {
 
   dynamodb.tableDef = tableDef;
 
-  var options = dynamodb.config = live ? { region: region } : {
+  var dynoOptions = dynamodb.config = live ? { region: region } : {
     region: 'fake',
     accessKeyId: 'fake',
     secretAccessKey: 'fake',
     endpoint: 'http://localhost:' + port
   };
 
-  dynamodb.dynamo = new AWS.DynamoDB(options);
-  dynamodb.dyno = Dyno(_({ table: dynamodb.tableName }).extend(options));
+  var dynamoOptions = live ? {
+    region: region
+  } : {
+    region: 'fake',
+    credentials: {
+      accessKeyId: 'fake',
+      secretAccessKey: 'fake'
+    },
+    endpoint: 'http://localhost:' + port
+  };
+
+  dynamodb.dynamo = new DynamoDB(dynamoOptions);
+  dynamodb.dyno = Dyno(_({ table: dynamodb.tableName }).extend(dynoOptions));
 
   var tableRunning = false;
 
