@@ -1,6 +1,6 @@
 {
   "name": "@mapbox/dynamodb-test",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "Create and destroy DynamoDB and Dynalite tables for use in tape tests",
   "main": "index.js",
   "scripts": {
@@ -26,7 +26,7 @@
   "homepage": "https://github.com/mapbox/dynamodb-test",
   "dependencies": {
     "@mapbox/dyno": "^1.6.1",
-    "@aws-sdk/client-dynamodb": "^3.0.0",
+    "@aws-sdk/client-dynamodb": "^3.1020.0",
     "dynalite": "^3.2.2",
     "underscore": "^1.13.6"
   },
