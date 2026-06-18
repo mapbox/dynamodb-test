@@ -1,6 +1,6 @@
 {
   "name": "@mapbox/dynamodb-test",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "description": "Create and destroy DynamoDB and Dynalite tables for use in tape tests",
   "main": "index.js",
   "scripts": {
@@ -33,5 +33,8 @@
   "devDependencies": {
     "eslint": "^6.8.0",
     "tape": "^4.16.2"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
